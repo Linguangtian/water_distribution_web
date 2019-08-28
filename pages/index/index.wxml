@@ -1,0 +1,28 @@
+<import src="/components/common/index"></import>
+<view class="page {{__page_classes}}">
+    <include src="/components/common/common"></include>
+    <include src="/components/header/header"></include>
+    <view class="body after-navber">
+        <template is="buy-data" data="{{buy:buy}}"></template>
+        <block wx:for="{{module_list}}" wx:key="{{item.id}}">
+            <template is="notice" data="{{notice:notice,update_list:update_list,__wxapp_img:__wxapp_img,show_notice:show_notice,item:item}}" wx:if="{{item.name=='notice'}}"></template>
+            <template is="banner" data="{{banner_list:banner_list,item:item}}" wx:elif="{{item.name=='banner'}}"></template>
+            <template is="search" data="{{__wxapp_img:__wxapp_img,item:item}}" wx:elif="{{item.name=='search'}}"></template>
+            <template is="nav" data="{{nav_icon_list:nav_icon_list,item:item,nav_count:nav_count}}" wx:elif="{{item.name=='nav'}}"></template>
+            <template is="topic" data="{{update_list:update_list,topic_list:topic_list,item:item}}" wx:elif="{{item.name=='topic'}}"></template>
+            <template is="coupon" data="{{__wxapp_img:__wxapp_img,coupon_list:coupon_list,update_list:update_list,item:item}}" wx:elif="{{item.name=='coupon'}}"></template>
+            <template is="cat" data="{{cat_list:cat_list,__wxapp_img:__wxapp_img,cat_goods_cols:cat_goods_cols,__is_sales:__is_sales,cat_item:item}}" wx:elif="{{item.name=='cat'||item.name=='single_cat'}}"></template>
+            <template is="miaosha" data="{{__wxapp_img:__wxapp_img,miaosha:miaosha,item:item}}" wx:elif="{{item.name=='miaosha'}}"></template>
+            <template is="pintuan" data="{{__wxapp_img:__wxapp_img,pintuan:pintuan,item:item}}" wx:elif="{{item.name=='pintuan'}}"></template>
+            <template is="yuyue" data="{{__wxapp_img:__wxapp_img,yuyue:yuyue,item:item}}" wx:elif="{{item.name=='yuyue'}}"></template>
+            <template is="video" data="{{__wxapp_img:__wxapp_img,update_list:update_list,video_item:item,play:play}}" wx:elif="{{item.name=='video'}}"></template>
+            <template is="mch" data="{{__wxapp_img:__wxapp_img,mch_list:mch_list,item:item}}" wx:elif="{{item.name=='mch'&&mch_list&&mch_list.length>0}}"></template>
+            <block wx:else>
+                <template is="{{'block-'+block.data.pic_list.length+'-'+block.style}}" data="{{__wxapp_img:__wxapp_img,block:block,item:item,store:store}}" wx:if="{{item.block_id==block.id}}" wx:for="{{block_list}}" wx:for-item="block" wx:key="block.id"></template>
+            </block>
+        </block>
+        <template is="act-modal" data="{{__wxapp_img:__wxapp_img,act_modal_list:act_modal_list}}" wx:if="{{act_modal_list&&act_modal_list.length>0}}"></template>
+    </view>
+    <include src="/components/quick-navigation/quick-navigation.wxml"></include>
+    <include src="/components/footer/footer"></include>
+</view>
