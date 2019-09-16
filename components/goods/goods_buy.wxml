@@ -65,10 +65,14 @@
             </view>
             <view bindtap="callPhone" class="flex-grow-1 flex-y-center flex-x-center buy-now" data-info="{{store.contact_tel}}" wx:if="{{store.good_negotiable.tel==1}}">联系电话</view>
         </view>
+
         <view class="flex-grow-1 flex-row" wx:else>
-            <view bindtap="addCart" class="flex-grow-1 flex-y-center flex-x-center add-cart">加入购物车</view>
+            <view bindtap="showVoucher" class="flex-grow-1 flex-y-center flex-x-center add-voucher" wx:if="{{goods.setting_voucher==1}}">购买抵用券</view>
+            <view bindtap="addCart" class="flex-grow-1 flex-y-center flex-x-center add-cart" wx:else>加入购物车</view>
             <view bindtap="buyNow" class="flex-grow-1 flex-y-center flex-x-center buy-now">立即购买</view>
         </view>
+
+
     </block>
     <view class="flex-grow-1 flex-row" wx:if="{{pageType==='MIAOSHA'}}">
         <view bindtap="buyNow" class="flex-grow-1 flex-y-center flex-x-center buy-now">立即购买</view>

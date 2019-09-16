@@ -1,0 +1,66 @@
+<view class="page">
+    <include src="/components/common/common"></include>
+    <include src="/components/header/header"></include>
+    <view class="body after-navber">
+
+
+        <view class="top-bar flex-row">
+            <view  style="width: 30%">
+                <image  style='width:100%;height:200rpx' src="{{info.avatar_url}}"></image>
+            </view>
+            <view  style="padding-left: 20rpx;padding-top:25rpx;" >
+                <view style="margin-bottom: 10rpx"><span>送水员姓名：</span>{{info.real_name}}</view>
+                <view style="margin-bottom: 10rpx"><span>员工工号：</span>{{info.code}}</view>
+                <text >联系电话：{{info.mobile}}</text>
+            </view>
+        </view>
+
+
+        <view class="order-list" style="margin-top: 230rpx;">
+            <view class="no-data-tip"  wx:if="{{list.length<1}}">暂无相关订单</view>
+            <view class="order-item"  wx:for="{{list}}" wx:for-item="order" wx:key="{{order.id}}">
+                <view class="flex-row">
+                    <view >
+                        <image  style='width:50rpx;height:50rpx' src="./images/address.png"></image>
+                    </view>
+
+                    <view  style="width: 90%">
+                        <view style="font-size: 12pt;margin-bottom: 12rpx;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">
+
+                            <text style="line-height: 50rpx;"> {{order.address}}</text>
+                        </view>
+                        <view class="flex-row order-info" style="font-size: 10pt;">
+                            <view class="flex-grow-1">联系人：{{order.addname}}</view>
+                            <view class="flex-grow-0">{{order.addmobile}}</view>
+                        </view>
+                        <view class="goods-list">
+                            <view class="goods-item " wx:for="{{order.goods_list}}" wx:for-item="goods" wx:key="{{goods.id}}">
+                                <view class="flex-row ">
+                                    <view class="flex-grow-1" style="width: 70%">
+                                        <view class="goods-name">{{goods.name}}  </view>
+                                    </view>
+                                    <view class="flex-grow-0" style="color: red;">×{{goods.num}}</view>
+                                </view>
+                            </view>
+                        </view>
+                        <view style="padding-bottom: 15rpx;">
+                            线上付款：<text  style="color: red;">￥{{order.total_price}}</text>
+                        </view>
+                    </view>
+                </view>
+
+
+                <view style="border-top: 1px solid rgba(59,49,44,0.76);padding-top: 20rpx;">
+                    <navigator url="{{status==4?'/pages/order-refund-detail/order-refund-detail?id='+order.order_refund_id:'/pages/order-detail/order-detail?id='+order.order_id}}">
+                        <view style="width: 100%; display:block;text-align: center">查看详情</view>
+                    </navigator>
+                </view>
+            </view>
+        </view>
+
+
+
+
+    </view>
+    <include src="/components/footer/footer"></include>
+</view>

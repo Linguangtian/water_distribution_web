@@ -56,6 +56,11 @@
     color: #fff;
 }
 
+.bar-bottom .add-voucher {
+    background: #2CC2FC;
+    color: #fff;
+}
+
 .bar-bottom .buy-now {
     background: #ff4544;
     color: #fff;

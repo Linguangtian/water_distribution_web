@@ -15,6 +15,7 @@ Page((_defineProperty(_Page = {
     data: {
         groupFail: 0,
         show_attr_picker: !1,
+
         form: {
             number: 1
         }
@@ -143,6 +144,22 @@ Page((_defineProperty(_Page = {
             show_attr_picker: !0
         });
     },
+
+    hideVoucher: function() {
+        this.setData({
+            show_voucher_package: !1
+        });
+    },
+    showVoucher: function() {
+        console.info('this is Voucher');
+        this.setData({
+            show_voucher_package: !0
+        });
+    },
+
+
+
+
     attrClick: function(t) {
         var o = this, e = t.target.dataset.groupId, a = t.target.dataset.id, i = o.data.attr_group_list;
         for (var r in i) if (i[r].attr_group_id == e) for (var s in i[r].attr_list) i[r].attr_list[s].attr_id == a ? i[r].attr_list[s].checked = !0 : i[r].attr_list[s].checked = !1;

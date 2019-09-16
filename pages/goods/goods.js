@@ -6,9 +6,11 @@ Page({
         id: null,
         goods: {},
         show_attr_picker: !1,
+        show_voucher_package: !1,
         form: {
             number: 1
         },
+        voucher_package:'',
         tab_detail: "active",
         tab_comment: "",
         comment_list: [],
@@ -125,6 +127,10 @@ Page({
             phoneNumber: o
         });
     },
+
+
+
+
     getGoods: function() {
         var n = this;
         if (n.data.quick) {
@@ -152,11 +158,14 @@ Page({
                     e.pic_list = i, n.setData({
                         goods: e,
                         attr_group_list: t.data.attr_group_list,
+                        voucher_package: t.data.voucher_package,
                         btn: !0
                     }), n.goods_recommend({
                         goods_id: t.data.id,
                         reload: !0
-                    }), n.selectDefaultAttr();
+                    }),
+
+                        n.selectDefaultAttr();
                 }
                 1 == t.code && getApp().core.showModal({
                     title: "提示",

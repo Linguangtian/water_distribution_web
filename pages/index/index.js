@@ -54,7 +54,7 @@ Page({
         e && (e.act_modal_list = [], a.setData(e)), getApp().request({
             url: getApp().api.default.index,
             success: function(t) {
-                0 == t.code && (page_first_init ? a.data.user_info_show || (page_first_init = !1) : t.data.act_modal_list = [], 
+                0 == t.code && (page_first_init ? a.data.user_info_show || (page_first_init = !1) : t.data.act_modal_list = [],
                 a.setData(t.data), getApp().core.setStorageSync(getApp().const.PAGE_INDEX_INDEX, t.data), 
                 a.miaoshaTimer());
             },

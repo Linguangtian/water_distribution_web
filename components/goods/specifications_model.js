@@ -8,8 +8,14 @@ module.exports = {
             a.showAttrPicker(t);
         }), void 0 === t.hideAttrPicker && (t.hideAttrPicker = function(t) {
             a.hideAttrPicker(t);
+        }), void 0 === t.hideVoucher && (t.hideVoucher = function(t) {
+            a.hideVoucher(t);
         }), void 0 === t.storeAttrClick && (t.storeAttrClick = function(t) {
             a.storeAttrClick(t);
+        }),  void 0 === t.buyVoucher && (t.buyVoucher = function(t) {
+            a.buyVoucher(t);
+        }),  void 0 === t.voucherClick && (t.voucherClick = function(t) {
+            a.voucherClick(t);
         }), void 0 === t.numberAdd && (t.numberAdd = function(t) {
             a.numberAdd(t);
         }), void 0 === t.numberSub && (t.numberSub = function(t) {
@@ -36,6 +42,13 @@ module.exports = {
             show_attr_picker: !0
         });
     },
+    hideVoucher: function() {
+        this.currentPage.setData({
+            show_voucher_package: !1
+        });
+
+    },
+
     storeAttrClick: function(t) {
         var e = this.currentPage, a = t.target.dataset.groupId, r = parseInt(t.target.dataset.id), i = JSON.parse(JSON.stringify(e.data.attr_group_list)), o = e.data.goods.attr, s = [];
         for (var n in "string" == typeof o && (o = JSON.parse(o)), i) if (i[n].attr_group_id == a) for (var d in i[n].attr_list) {
@@ -131,7 +144,7 @@ module.exports = {
         }
     },
     attrClick: function(t) {
-        var r = this, a = t.target.dataset.groupId, e = t.target.dataset.id, i = r.data.attr_group_list;
+        var r = this, a = t.target.dataset.groupId, e = t.target.dataset.idi = r.data.attr_group_list;;
         for (var o in i) if (i[o].attr_group_id == a) for (var s in i[o].attr_list) i[o].attr_list[s].attr_id == e ? i[o].attr_list[s].checked = !0 : i[o].attr_list[s].checked = !1;
         r.setData({
             attr_group_list: i
@@ -169,6 +182,113 @@ module.exports = {
             }
         }));
     },
+
+
+    //选择优惠卷
+    voucherClick: function(t) {
+        console.info(t);
+        var z = this.currentPage;
+        var r = this, a = t.target.dataset.id, e = t.target.dataset.code,p = t.target.dataset.price, i = z.data.voucher_package;
+         for (var o in i) i[o].id == a ? i[o].checked = !0 : i[o].checked  = !1;
+        z.setData({
+            voucher_package: i
+        });
+        var g = z.data.goods;
+        g.price = p, z.setData({
+            goods: g,
+
+        });
+    },
+
+    //提交订单
+    buyVoucher :function(){
+        var voucher_id;
+        var a = this.currentPage, i = a.data.voucher_package;
+        for (var o in i) {
+            if(i[o].checked ==  !0){
+                voucher_id=i[o].id;
+            }
+
+        }
+        if(!voucher_id){
+            return false;
+        }
+     /*   a.setData({
+            show_voucher_package: !1
+        });
+        var n = [];
+        n.push({
+            goods_id: a.data.goods.id,
+            type: 'voucher',
+            voucher_id:voucher_id,
+            attr: o
+        });
+        var d = a.data.goods, g = 0;
+        null != d.mch && (g = d.mch.id);
+        var u = [];
+        u.push({
+            mch_id: g,
+            goods_list: n
+        }), getApp().core.redirectTo({
+            url: "/pages/new-order-submit/new-order-submit?mch_list=" + JSON.stringify(u)
+        });*/
+
+
+       var g = 0
+        getApp().request({
+            url: getApp().api.order.pay_voucher,
+            data: {
+                voucher_id:voucher_id,
+                goods_id:a.data.goods.id,
+                type: "voucher",
+                mch_id: g,
+            },
+            complete: function() {
+                getApp().core.hideLoading();
+            },
+            success: function(t) {
+             /*   0 == t.code && getApp().core.requestPayment({
+                    _res: t,
+                    timeStamp: t.data.timeStamp,
+                    nonceStr: t.data.nonceStr,
+                    package: t.data.package,
+                    signType: t.data.signType,
+                    paySign: t.data.paySign,
+                    success: function(t) {},
+                    fail: function(t) {},
+                    complete: function(t) {
+                        "requestPayment:fail" != t.errMsg && "requestPayment:fail cancel" != t.errMsg ? getApp().core.redirectTo({
+                            url: "/pages/order/order?status=1"
+                        }) : getApp().core.showModal({
+                            title: "提示",
+                            content: "订单尚未支付",
+                            showCancel: !1,
+                            confirmText: "确认",
+                            success: function(t) {
+                                t.confirm && getApp().core.redirectTo({
+                                    url: "/pages/order/order?status=0"
+                                });
+                            }
+                        });
+                    }
+                }), 1 == t.code && getApp().core.showToast({
+                    title: t.msg,
+                    image: "/images/icon-warning.png"
+                });*/
+            }
+        });
+
+
+
+
+
+
+
+
+    },
+
+
+
     integralMallAttrClick: function(t) {
         var a = this.currentPage, r = a.data.goods, e = r.attr, i = 0, o = 0;
         for (var s in e) JSON.stringify(e[s].attr_list) == JSON.stringify(t) && (i = 0 < parseFloat(e[s].price) ? e[s].price : r.price, 

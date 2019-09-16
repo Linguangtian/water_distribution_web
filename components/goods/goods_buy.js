@@ -14,6 +14,8 @@ module.exports = {
             a.addCart(t);
         }), void 0 === t.buyNow && (t.buyNow = function(t) {
             a.buyNow(t);
+        }), void 0 === t.showVoucher && (t.showVoucher = function(t) {
+            a.showVoucher(t);
         }), void 0 === t.goHome && (t.goHome = function(t) {
             a.goHome(t);
         });
@@ -68,9 +70,16 @@ module.exports = {
         this.currentPage.data.btn && this.submit("ADD_CART");
     },
     buyNow: function() {
+        console.info('this is buyNow');
         this.currentPage.data.btn && this.submit("BUY_NOW");
     },
+
+    showVoucher: function() {
+        console.info('this is showVoucher');
+        this.currentPage.data.btn && this.submitVoucher("Voucher");
+    },
     submit: function(t) {
+
         var a = this.currentPage;
         if (!a.data.show_attr_picker) return a.setData({
             show_attr_picker: !0
@@ -144,6 +153,19 @@ module.exports = {
             });
         }
     },
+
+
+    submitVoucher: function(t){
+        console.info('this is submitVoucher');
+        var a = this.currentPage;
+        if (!a.data.show_voucher_package) return a.setData({
+            show_voucher_package: !0
+        }), !0;
+
+    },
+
+
+
     goHome: function(t) {
         var a = this.currentPage.data.pageType;
         if ("PINTUAN" === a) var e = "/pages/pt/index/index"; else if ("BOOK" === a) e = "/pages/book/index/index"; else e = "/pages/index/index";
