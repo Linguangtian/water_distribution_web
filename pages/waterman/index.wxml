@@ -4,7 +4,7 @@
     <view class="body after-navber">
 
 
-        <view class="top-bar flex-row">
+        <view class="top-bar flex-row" >
             <view  style="width: 30%">
                 <image  style='width:100%;height:200rpx' src="{{info.avatar_url}}"></image>
             </view>
@@ -51,7 +51,7 @@
 
 
                 <view style="border-top: 1px solid rgba(59,49,44,0.76);padding-top: 20rpx;">
-                    <navigator url="{{status==4?'/pages/order-refund-detail/order-refund-detail?id='+order.order_refund_id:'/pages/order-detail/order-detail?id='+order.order_id}}">
+                    <navigator url="{{'/pages/water-order/order-detail?id='+order.id}}">
                         <view style="width: 100%; display:block;text-align: center">查看详情</view>
                     </navigator>
                 </view>

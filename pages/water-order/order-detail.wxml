@@ -1,0 +1,66 @@
+<view class="page">
+    <include src="/components/common/common"></include>
+    <include src="/components/header/header"></include>
+    <view class="body after-navber" wx:if="{{isPageShow}}" >
+
+        <view style="overflow-x: hidden">
+            <view class="block" style="border-top: 1px solid #c5c5c5; ">
+                    <view  style="display: block;text-align: center;margin-bottom: 10rpx" >{{order.address}}</view>
+                  <!--  <view  style="display: block;text-align: center;">收货地址：{{order.address}}</view>-->
+                    <view  style="display: block;text-align: center;margin-bottom: 10rpx">联系人：{{order.addname}}</view>
+                    <view   style=" display: block;text-align: center;" >联系电话：{{order.addmobile}}</view>
+            </view>
+            <view class="block flex-row" >
+                <view class="flex-grow-1">
+                    <view class="flex-grow-1" style="font-size:14pt ">总欠桶：<a style="color: #39CEA1">{{bucket.bucket}}个</a></view>
+                </view>
+                <view class="flex-grow-0 flex-y-center">
+                    <view class="flex-grow-1" style="font-size:14pt ">押桶：<a style="color: #E56368">{{bucket.deposit_bucket}}个</a></view>
+                </view>
+            </view>
+
+
+            <view class="block" style="margin-bottom: 5rpx;">
+                <view class="flex-grow-1" style="font-size:14pt;margin-bottom: 20rpx;font-weight:bold;" >订单详情：</view>
+                <view class="block-row flex-row">
+                    <view class="flex-grow-1">订单编号：{{order.order_no}}</view>
+                    <view class="flex-grow-0">
+                        <text bindtap="copyText" class="copy-text-btn" data-text="{{order.order_no}}">复制</text>
+                    </view>
+                </view>
+                <view class="block-row"> 下单时间：{{order.create_time}}</view>
+                <view  class="block-row flex-row"  wx:for="{{order.goods_list}}" wx:key="{{item.id}}"> <view class="flex-grow-1">{{item.name}}</view>  <view class="flex-grow-0"> x {{item.num}} </view></view>
+
+
+            </view>
+            <view class="block" style="margin-top: 5rpx;padding:10rpx 34rpx;">
+                <view >线上支付：{{order.pay_type_text}}</view>
+            </view>
+            <view class="block">
+                <view class="goods-item">
+                    <view  style="font-size:15pt;margin-bottom: 30rpx;font-weight:bold;">回收空桶数：</view>
+                    <view style="padding-left: 40rpx; margin-bottom: 20rpx;">
+                        <input  min="1" step="1" type="number" style="background-color: #EFEFF4; height: 100rpx;width: 100%;border-radius: 10rpx;"  value="{{return_bucket}}" bindinput="returnBucket" cols="50" rows="3" name="num"></input>
+                    </view>
+                    <view xw:if="{{notis}}"> <text style="color: red"> {{notis}} </text> </view>
+                    <view class="flex-row" style="margin: 46rpx 0;">
+                        <view class="flex-grow-1">
+                            <view bindtap="callTel" style="background: #009944" data-tel="{{order.addmobile}}" class=" submit-btn flex-x-center flex-y-center">一键联系</view>
+                        </view>
+
+
+                        <view class="flex-grow-1">
+                            <view bindtap="commentSubmit" style="background: #1E9DEF;" class="submit-btn flex-x-center flex-y-center">确认送达</view>
+                        </view>
+
+                    </view>
+
+                </view>
+            </view>
+
+
+        </view>
+    </view>
+
+    <include src="/components/footer/footer"></include>
+</view>

@@ -41,8 +41,7 @@ Page({
 
   onReachBottom: function () {
       var a = this;
-      if(a.data.status!=2) return false;
-      //status==1 已使用  status==2水票记录
+
     is_loading || is_no_more || (is_loading = !0, getApp().request({
       url: getApp().api.waterman.order,
       data: {

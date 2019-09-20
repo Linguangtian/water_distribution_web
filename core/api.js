@@ -55,7 +55,8 @@ var api = {
     waterman:{
         info : _api_root + "waterman/index",
         order : _api_root + "waterman/list",
-
+        order_detail: _api_root + "waterman/order-detail",
+        order_confirm: _api_root + "waterman/order-confirm",
 
     },
     order: {

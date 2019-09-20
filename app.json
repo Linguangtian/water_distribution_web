@@ -1,11 +1,12 @@
 {
   "pages": [
-
+    "pages/order/order",
     "pages/index/index",
     "pages/waterman/index",
+    "pages/water-order/order-detail",
     "pages/goods/goods",
     "pages/user-watervoucher/order",
-    "pages/order/order",
+
     "pages/cart/cart",
     "pages/list/list",
     "pages/user/user",

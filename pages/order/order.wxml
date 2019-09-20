@@ -63,6 +63,12 @@
                         </view>
                     </view>
                 </navigator>
+                <view wx:if="{{}}}">
+                    <text>送水员此次回收空桶数：{{order.waterorder.back_bucket}}个 </text>
+                </view>
+
+
+
                 <view class="flex-row">
                     <view class="flex-grow-1 flex-y-center">
                         <block wx:if="{{status==4}}">
