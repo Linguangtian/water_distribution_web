@@ -1,0 +1,90 @@
+page{background:#ffffff;}
+.page{background:#ffffff;}
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 999;
+    padding: 10rpx;
+}
+.bucker-top{
+    margin-top: 10rpx;
+    border: 2rpx solid #e3e3e3;
+    border-radius: 20rpx;
+
+}
+.bucker-top .back-bucket{
+    line-height:56rpx;
+    font-size:35rpx;
+    padding:32rpx;
+
+}
+
+.top-bar navigator {
+    text-align: center;
+
+}
+
+.top-bar navigator text {
+    height: 90rpx;
+    line-height: 90rpx;
+    border-bottom: 2rpx solid transparent;
+    width: auto;
+    display: inline-block;
+}
+
+.top-bar navigator.active text {
+    color: #ff4544;
+    border-bottom-color: #ff4544;
+}
+
+
+.order-list .goods-item {
+    background: #fff;
+    padding: 32rpx 24rpx;
+    margin-bottom: 10rpx;
+
+}
+
+.goods-info{
+    margin-left:22rpx;
+    overflow: hidden;
+}
+.goods-title{
+    width: 88%;
+    margin-bottom: 25px;
+    height: 37rpx;
+    overflow: hidden;
+}
+.goods-title text{
+    font-size: 27rpx;
+    line-height: 27rpx;
+    text-align: center;
+}
+.goods-info .price{
+    color: #EC9883;
+}
+.info-left{
+    padding-top:52rpx;
+
+}
+.wv-num{
+    font-size: 22rpx;
+    line-height: 37rpx;
+    color: #000000;
+   font-width:bold;
+}
+
+.bnt{
+
+    background:#8CACF2;
+    border-radius:32rpx;
+    line-height:37rpx;
+    color:#ffffff;
+    margin-right: 25rpx;
+    padding:0 30rpx;
+
+
+}

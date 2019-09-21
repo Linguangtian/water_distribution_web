@@ -47,9 +47,12 @@ var api = {
         on_login: _api_root + "passport/on-login"
     },
     watervoucher:{
-        user_list: _api_root + "uservoucher/list",
-        user_order:_api_root + "uservoucher/order",
-        user_log:_api_root + "uservoucher/log",
+        user_list: _api_root + "watervoucher/user-list",
+        user_order:_api_root + "watervoucher/user-order",
+        user_log:_api_root + "watervoucher/user-log",
+        goods_list_info : _api_root + "watervoucher/goods-list-info",
+        goods_list : _api_root + "watervoucher/goods-list",
+        info : _api_root + "watervoucher/info",
 
     },
     waterman:{
@@ -59,6 +62,7 @@ var api = {
         order_confirm: _api_root + "waterman/order-confirm",
 
     },
+
     order: {
         submit_preview: _api_root + "order/submit-preview",
         submit: _api_root + "order/submit",

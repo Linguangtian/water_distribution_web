@@ -52,7 +52,7 @@
 
 .coupon-list .coupon-item .coupon-status-icon {
     width: 140rpx;
-    height: 98rpx;
+    height: 140rpx;
     position: absolute;
     top: 0;
     right: 8rpx;

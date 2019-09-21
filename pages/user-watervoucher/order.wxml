@@ -17,12 +17,9 @@
             <view wx:if="{{status==2}}">
                 <!--end水票记录-->
                  <block wx:for="{{list}}" wx:for-item="voucher" wx:key="{{item.id}}">
-                    <view class="coupon-item coupon-status-0" style="margin-top:20rpx;">
-                        <image class="coupon-bg" src="/images/img-coupon-bg-1.png" wx:if="{{voucher.change_type==2}}"></image>
-                        <image class="coupon-bg" src="/images/img-coupon-bg-0.png" wx:else></image>
+                    <view class="coupon-item coupon-status-0" style="margin-top:20rpx; padding: 10rpx;background: #ffffff;">
 
-                        <image class="coupon-status-icon" src="/images/img-coupon-status-icon-1.png" wx:if="{{voucher.change_type==2}}"></image>
-
+                        <image class="coupon-status-icon" src="/images/img-varchou-status-icon-3.png" wx:if="{{voucher.change_type==2}}"></image>
                         <view class="flex-row" style="height: 100%;overflow: hidden;position:relative">
                             <view class="flex-grow-0 flex-col flex-y-center flex-x-center coupon-left">
                                 <image  style='width:100%;height:100%' src="{{voucher.cover_pic}}"></image>
@@ -30,18 +27,25 @@
                             <view class="flex-grow-1 flex-y-center coupon-right">
                                 <view style="width:100%;">
                                     <navigator openType="navigateTo" >
-                                        <view class="flex-row flex-y-center mb-10" style="margin:5rpx 0 2rpx 6rpx;">
+                                        <view class="flex-row flex-y-center mb-10" style="margin:5rpx 0 2rpx 6rpx;" >
                                             <view class="flex-grow-1">{{voucher.name}}-水票</view>
                                         </view>
-                                        <text class="user_coupon_font" >使用时间 :{{voucher.create_time}}</text>
-                                        <view  wx:if="{{voucher.change_type!=2}}">
-                                            <text class="user_coupon_font"> {{voucher.type}}  + {{voucher.change_num}} 张</text>
-                                        </view>
-                                        <view  wx:else>
-                                            <view> <text class="user_coupon_font" >{{voucher.type}} | - {{voucher.change_num}} 张</text></view>
+                                        <text class="user_coupon_font"  style="color: #B9B9B9;font-size:25rpx;padding-left: 4rpx;">使用时间 :{{voucher.create_time}}</text>
+                                        <view class="flex-row" style="margin-top: 4rpx">
+                                            <view class="flex-grow-1">
+                                                <view  wx:if="{{voucher.change_type!=2}}">
+                                                    {{voucher.type}}  <text class="user_coupon_font" style="color: #FC243C">  + {{voucher.change_num}} 张</text>                                    </view>
+                                                <view  wx:else>
+                                                    <view>{{voucher.type}} <text class="user_coupon_font" style="color: #128E12"> - {{voucher.change_num}} 张</text></view>
+                                                </view>
+                                            </view>
+
+                                            <view class="flex-grow-0">
+                                                <text class="user_coupon_font" style="margin-bottom: 5rpx;">当前剩余：{{voucher.current_total}} 张</text>
+                                            </view>
                                         </view>
 
-                                        <text class="user_coupon_font" >当前剩余：{{voucher.current_total}} 张</text>
+
                                     </navigator>
                                 </view>
                             </view>
@@ -53,21 +57,19 @@
             <view  wx:else>
                 <!--未使用和已使用-->
                 <block wx:for="{{list}}" wx:for-item="voucher" wx:key="{{item.id}}">
-                    <view class="coupon-item coupon-status-0" style="margin-top:20rpx;">
-                        <image class="coupon-bg" src="/images/img-coupon-bg-1.png" wx:if="{{voucher.change_type==2}}"></image>
-                        <image class="coupon-bg" src="/images/img-coupon-bg-0.png" wx:else></image>
-                        <image class="coupon-status-icon" src="/images/img-coupon-status-icon-1.png" wx:if="{{voucher.change_type==2}}"></image>
+                    <view class="coupon-item coupon-status-0" style="margin-top:20rpx; padding: 10rpx;background: #ffffff;">
+                        <image class="coupon-status-icon" src="/images/img-varchou-status-icon-2.png" wx:if="{{voucher.change_type==2}}"></image>
                         <view class="flex-row" style="height: 100%;overflow: hidden;position:relative">
                             <view class="flex-grow-0 flex-col flex-y-center flex-x-center coupon-left">
-                                <image  style='width:100%;height:100%' src="{{voucher.cover_pic}}"></image>
+                                <image  style='width:90%;height:100%' src="{{voucher.cover_pic}}"></image>
                             </view>
                             <view class="flex-grow-1 flex-y-center coupon-right">
                                 <view style="width:100%;">
                                     <navigator openType="navigateTo" >
-                                        <view class="flex-row flex-y-center mb-10" style="margin:5rpx 0 2rpx 6rpx;">
+                                        <view class="flex-row flex-y-center mb-10" style="margin:5rpx 0 20rpx 6rpx;">
                                             <view class="flex-grow-1">{{voucher.name}}-水票</view>
                                         </view>
-                                        <text class="user_coupon_font"  wx:if="{{voucher.change_type!=2}}">价值：￥{{voucher.price}}  X {{voucher.num}} 张</text>
+                                        <text class="user_coupon_font"  wx:if="{{voucher.change_type!=2}}" style="color: #EA3627">价值：￥{{voucher.price}}  X {{voucher.num}} 张</text>
                                         <view  wx:else>
                                             <text class="user_coupon_font" >使用时间 :{{voucher.create_time}}</text>
                                             <view> <text class="user_coupon_font" >{{voucher.type}} | - {{voucher.change_num}} 张</text></view>
