@@ -1,45 +1,36 @@
-<view class="page">
+<view class="page" >
     <include src="/components/common/common"></include>
     <include src="/components/header/header"></include>
-    <view class="body after-navber">
+    <view class="body" style="padding: 24rpx; ">
 
 
         <view class="top-bar " >
             <view  class="bucker-top flex-row"  >
-                <view  class="flex-grow-1 back-bucket">
-                   总欠桶：<a style="color: #74D9B8">{{info.bucket}}个</a>
+                <view  class="flex-grow-0">
+                    <image  class="img" src="{{info.cover_pic}}"></image>
                 </view>
-                <view  class="flex-grow-1 back-bucket " >押桶：<a style="color: #E1454B">{{info.deposit_bucket}}个</a></view>
+                <view  class="flex-grow-1 content" >
+                    <view class="v-title"> <text class="c-title">{{info.goods_name}}</text> </view>
+                    <view  class="c-sell"> 月售 {{info.sales?info.sales:0}}</view>
+                    <view  class="c-price">
+                        ￥<a > {{price}}</a>
+                        <span class="o-price">￥{{cost_price}}</span>
+                    </view>
+                </view>
 
             </view>
         </view>
+        <view class="voucher-list" style="margin-top: 180rpx;">
+              <view class="title">买送</view>
+               <view class="attr-list">
+                   <text bindtap="voucherClick" class="attr-item {{item.code==default_code?'active':''}}" data-id="{{item.id}}" data-code="{{item.code}}" data-price="{{item.package_price}}"  data-costprice="{{item.cost_price}}" wx:for="{{list}}">{{item.title}}
+                   </text>
+               </view>
 
-
-        <view class="order-list" style="margin-top: 160rpx;">
-            <view class="no-data-tip"  wx:if="{{list.length<1}}">暂无商品</view>
-            <view class="goods-item"  wx:for="{{list}}" wx:for-item="goods" wx:key="{{goods.id}}">
-                <view class="flex-row">
-                    <view style="width: 60%">
-                        <view class="flex-row">
-                            <view class="flex-grow-0">  <image  style='width:120rpx;height:120rpx' src="{{goods.cover_pic}}"></image></view>
-                            <view class="flex-grow-1 goods-info" >
-                                <view class="goods-title"><text>{{goods.name}}</text></view>
-                                <view class="price">￥{{goods.low_price}}起</view>
-                            </view>
-                        </view>
-                    </view>
-
-
-                    <view style="width: 40%">
-                            <view  class="flex-row info-left">
-                                <view  class="flex-grow-1 wv-num"><text>剩余：{{goods.num?goods.num:0}}张</text></view>
-                                <view  class="flex-grow-0">  <navigator url="{{'/pages/goods/goods?id='+goods.goods_id}}"><text class="bnt">充值</text>  </navigator></view>
-                            </view>
-                    </view>
-                </view>
-            </view>
+            <view class="notis" wx:if="{{info.notis}}">{{info.notis}}</view>
         </view>
 
+        <view class="btn"  bindtap="buyVoucher"><a>立即充值</a></view>
 
 
 

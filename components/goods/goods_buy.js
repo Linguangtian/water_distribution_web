@@ -74,9 +74,13 @@ module.exports = {
         this.currentPage.data.btn && this.submit("BUY_NOW");
     },
 
-    showVoucher: function() {
-        console.info('this is showVoucher');
-        this.currentPage.data.btn && this.submitVoucher("Voucher");
+    showVoucher: function(t) {
+        var goods_id;
+        goods_id=t.target.dataset.goods_id;
+        getApp().core.redirectTo({
+            url: "/pages/watervoucher-info/index?goods_id=" + goods_id
+        });
+
     },
     submit: function(t) {
 

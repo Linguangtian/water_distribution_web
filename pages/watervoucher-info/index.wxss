@@ -7,12 +7,10 @@ page{background:#ffffff;}
     width: 100%;
     background: #fff;
     z-index: 999;
-    padding: 10rpx;
+    padding: 24rpx;
 }
 .bucker-top{
-    margin-top: 10rpx;
-    border: 2rpx solid #e3e3e3;
-    border-radius: 20rpx;
+
 
 }
 .bucker-top .back-bucket{
@@ -22,69 +20,78 @@ page{background:#ffffff;}
 
 }
 
-.top-bar navigator {
-    text-align: center;
 
+.content{margin-left: 20rpx;
+    position: relative;
 }
-
-.top-bar navigator text {
-    height: 90rpx;
-    line-height: 90rpx;
-    border-bottom: 2rpx solid transparent;
-    width: auto;
-    display: inline-block;
-}
-
-.top-bar navigator.active text {
-    color: #ff4544;
-    border-bottom-color: #ff4544;
-}
-
-
-.order-list .goods-item {
-    background: #fff;
-    padding: 32rpx 24rpx;
-    margin-bottom: 10rpx;
-
-}
-
-.goods-info{
-    margin-left:22rpx;
-    overflow: hidden;
-}
-.goods-title{
-    width: 88%;
-    margin-bottom: 25px;
-    height: 37rpx;
-    overflow: hidden;
-}
-.goods-title text{
-    font-size: 27rpx;
-    line-height: 27rpx;
-    text-align: center;
-}
-.goods-info .price{
-    color: #EC9883;
-}
-.info-left{
-    padding-top:52rpx;
-
-}
-.wv-num{
-    font-size: 22rpx;
-    line-height: 37rpx;
+.content .c-title{
+    font-size: 30rpx;
+    font-weight: bold;
+    line-height:30rpx ;
     color: #000000;
-   font-width:bold;
+
+}
+.v-title{
+    overflow: hidden;
+    height: 35rpx;
+
+}
+.content .c-sell{
+    padding-top: 16rpx;
+    line-height:22rpx ;
+    font-size: 22rpx;
+}
+.content .c-price{
+    position: absolute;
+    bottom: 10rpx;
+    font-size: 23rpx;
+    color: #EA765A;
+}
+.content .c-price a{
+    font-size: 26rpx;
+    font-weight: bold;
+}
+.content .o-price {
+    padding-left: 15rpx;
+    text-decoration:line-through;
+    color: #3c3642;
 }
 
-.bnt{
+.img{
+    width:140rpx;height:140rpx;
+    border:1px solid #848484;
+}
 
-    background:#8CACF2;
-    border-radius:32rpx;
-    line-height:37rpx;
-    color:#ffffff;
-    margin-right: 25rpx;
-    padding:0 30rpx;
+ .attr-item {
+    display: inline-block;
+    margin: 0 30rpx 30rpx 0;
+    background: #f7f7f7;
+    padding: 13rpx 50rpx;
+}
 
-
+ .attr-item.active {
+    background: #E3EEFD;
+    color: #799EF0;
+}
+.title{
+    font-size: 22rpx;
+    color: #8C8C8C;
+    margin-bottom: 10rpx;
+}
+.notis{
+    font-size: 26rpx;
+    color: #8C8C8C;
+}
+.btn{
+    position: fixed;
+    bottom: 50rpx;
+    text-align: center;
+    width: 90%;
+    padding:0 5%;
+    font-size: 26rpx;
+    line-height: 66rpx;
+    background-color: #799EF0;
+}
+.btn a{
+    color: #ffffff;
 }

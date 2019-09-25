@@ -12,10 +12,10 @@
             </view>
             <view class="block flex-row" >
                 <view class="flex-grow-1">
-                    <view class="flex-grow-1" style="font-size:14pt ">总欠桶：<a style="color: #39CEA1">{{bucket.bucket}}个</a></view>
+                    <view class="flex-grow-1" style="font-size:14pt ">总欠桶：<a style="color: #39CEA1">{{bucket.bucket?bucket.bucket:0}}个</a></view>
                 </view>
                 <view class="flex-grow-0 flex-y-center">
-                    <view class="flex-grow-1" style="font-size:14pt ">押桶：<a style="color: #E56368">{{bucket.deposit_bucket}}个</a></view>
+                    <view class="flex-grow-1" style="font-size:14pt ">押桶：<a style="color: #E56368">{{bucket.deposit_bucket?bucket.deposit_bucket:0}}个</a></view>
                 </view>
             </view>
 

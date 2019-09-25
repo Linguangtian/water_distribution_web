@@ -201,6 +201,7 @@ Page({
                     var a = getApp().core.getStorageSync(getApp().const.INPUT_DATA);
                     getApp().core.removeStorageSync(getApp().const.INPUT_DATA);
                     var e = [], i = t.data.coupon_list;
+                    var  w = t.data.water_voucher;
                     for (var s in i) null != i[s] && e.push(i[s]);
                     var o = t.data.shop_list, d = {};
                     o && 1 == o.length && (d = o[0]), t.data.is_shop && (d = t.data.is_shop), a || (1 < (a = {
@@ -212,7 +213,9 @@ Page({
                         form: t.data.form
                     }).pay_type_list.length ? a.payment = -1 : a.payment = a.pay_type_list[0].payment), 
                     a.total_price = t.data.total_price || 0, a.goods_list = t.data.list || null, a.express_price = parseFloat(t.data.express_price), 
-                    a.coupon_list = i, a.shop_list = o, a.send_type = t.data.send_type, a.level = t.data.level, 
+                    a.coupon_list = i,
+                        a.water_voucher = w,
+                        a.shop_list = o, a.send_type = t.data.send_type, a.level = t.data.level,
                     a.new_total_price = t.data.total_price || 0, a.integral = t.data.integral, a.goods_card_list = t.data.goods_card_list || [], 
                     a.is_payment = t.data.is_payment, a.mch_list = t.data.mch_list || null, a.is_area_city_id = t.data.is_area_city_id, 
                     a.pay_type_list = t.data.pay_type_list, a.offer_rule = t.data.offer_rule, a.is_area = t.data.is_area, 

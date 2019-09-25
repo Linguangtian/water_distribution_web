@@ -33,7 +33,7 @@
                     <view style="width: 40%">
                             <view  class="flex-row info-left">
                                 <view  class="flex-grow-1 wv-num"><text>剩余：{{goods.num?goods.num:0}}张</text></view>
-                                <view  class="flex-grow-0">  <navigator url="{{'/pages/goods/goods?id='+goods.goods_id}}"><text class="bnt">充值</text>  </navigator></view>
+                                <view  class="flex-grow-0">  <navigator url="{{'/pages/watervoucher-info/index?goods_id='+goods.goods_id}}"><text class="bnt">充值</text>  </navigator></view>
                             </view>
                     </view>
                 </view>

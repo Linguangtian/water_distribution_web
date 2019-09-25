@@ -1,8 +1,17 @@
 {
   "pages": [
-    "pages/order/order",
     "pages/index/index",
+    "pages/new-order-submit/new-order-submit",
+
+
+
+
+
+    "pages/watervoucher-info/index",
+    "pages/order/order",
     "pages/waterman/index",
+    "pages/watervoucher-goods/index",
+
     "pages/water-order/order-detail",
     "pages/goods/goods",
     "pages/user-watervoucher/order",
@@ -98,7 +107,7 @@
     "pages/integral-mall/order/order",
     "pages/integral-mall/clerk/clerk",
     "pages/store-disabled/store-disabled",
-    "pages/new-order-submit/new-order-submit",
+
     "pages/coupon-detail/coupon-detail",
     "pages/card-detail/card-detail",
     "pages/demo/demo"

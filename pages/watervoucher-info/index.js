@@ -3,7 +3,13 @@ var app = getApp(), api = getApp().api, is_no_more = !1, is_loading = !1, p = 2;
 Page({
     data: {
         list: [],
-        info: []
+        info: [],
+        goods_id:'',
+        price:'',
+        cost_price:'',
+        default_code:'',
+        v_id:''
+
     },
     onLoad: function(t) {
         getApp().page.onLoad(this, t), this.setData({
@@ -13,19 +19,28 @@ Page({
     },
     loadData: function(t) {
         var a = this;
+        a.setData({goods_id:t.goods_id});
         var  url;
         getApp().core.showLoading({
             title: "加载中"
         });
 
-       url=getApp().api.watervoucher.goods_list_info;
+       url=getApp().api.watervoucher.info;
         getApp().request({
             url:url ,
-            data: { },
+            data: {
+                goods_id:t.goods_id
+            },
             success: function(t) {
                  a.setData({
-                    list: t.goodsList.data.list,
-                    info: t.mybucket
+                     list: t.data.list,
+                     info: t.data,
+                     price:t.data.default_price,
+                     cost_price:t.data.default_cost_price,
+                     default_code:t.data.default,
+                     v_id:t.data.default_id,
+
+
 
                 });
             },
@@ -35,28 +50,48 @@ Page({
         });
     },
 
-  onReachBottom: function () {
-      var a = this;
-    is_loading || is_no_more || (is_loading = !0, getApp().request({
-      url: getApp().api.watervoucher.goods_list,
-      data: {
-          page: p
-      },
-      success: function (t) {
-        if (0 == t.code) {
-            var e = a.data.list.concat(t.data.list);
-          a.setData({
-              list: e
-          }); 0 == t.data.list.length && (is_no_more = !0);
-        }
-        p++;
-      },
-      complete: function () {
-        is_loading = !1;
-      }
-    }));
-  },
+    //选择优惠卷
+    voucherClick: function(t) {
+        var r = this,
+            a = t.target.dataset.id,
+            e = t.target.dataset.code,
+            p = t.target.dataset.price,
+            c = t.target.dataset.costprice;
+        r.setData({
+            price:p,
+            cost_price:c,
+            default_code:e,
+            v_id:a,
+        });
 
+    },
+
+    //提交订单
+    buyVoucher :function(){
+
+        var a = this;
+        getApp().request({
+            url: getApp().api.order.pay_voucher,
+            data: {
+                goods_id:a.data.goods_id,
+                voucher_id:a.data.v_id,
+                type: "voucher",
+
+            },
+            complete: function() {
+                getApp().core.hideLoading();
+            },
+            success: function(e) {
+                0 == e.code && getApp().core.redirectTo({
+                    url: "/pages/user-watervoucher/order"
+                }),1 == e.code && getApp().core.showModal({
+                    title: "提示",
+                    content: e.msg,
+                    showCancel: !1
+                });
+            }
+        });
+    },
 
 
 });

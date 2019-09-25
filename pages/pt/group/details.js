@@ -151,10 +151,7 @@ Page((_defineProperty(_Page = {
         });
     },
     showVoucher: function() {
-        console.info('this is Voucher');
-        this.setData({
-            show_voucher_package: !0
-        });
+       console.info(111);
     },
 
 
