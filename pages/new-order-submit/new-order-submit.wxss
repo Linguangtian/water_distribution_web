@@ -387,3 +387,7 @@
 .cart-list {
     margin-bottom: 20rpx;
 }
+.cancel-bnt{
+    position:absolute;width:100%;bottom: 30rpx;height: 80rpx;color: #ffffff; background:#1E9DEF;border: 1rpx solid #e3e3e3;border-radius: 10rpx
+
+}

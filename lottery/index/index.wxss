@@ -1,6 +1,6 @@
 @import "../commons/naver/naver.wxss";
 
-@import "../__wuBaseWxss__/0.wxss";
+@import "../wuBaseWxss/0.wxss";
 
 .lottery-btn {
     color: #ffffff;

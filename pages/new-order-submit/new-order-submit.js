@@ -15,7 +15,8 @@ Page({
         index: -1,
         mch_offline: !0,
         show_water_voucher: !1,
-        use_water_voucher: ''
+        use_water_voucher:'',
+        deduction:0
     },
     onLoad: function(t) {
         getApp().page.onLoad(this, t);
@@ -73,7 +74,7 @@ Page({
     },
     orderSubmit: function(t) {
         var e = this, a = {}, i = e.data.mch_list;
-        console.info( i);
+
         for (var o in i) {
             var s = i[o].form;
             if (s && 1 == s.is_form && 0 == i[o].mch_id) {
@@ -214,35 +215,46 @@ Page({
             water_voucher: a[e].water_voucher,
             index: e
         });
-        console.info(a[e].water_voucher);
 
     },
+    //隐藏
+    hideWaterVoucher:function(){
+        this.setData({
+            show_water_voucher: !1
+        })
+    },
+
     useWaterVoucher:function(t){
         var use_water_voucher  ={},li={};
         var e = t.currentTarget.dataset.index, a = this.data.mch_list;
+        var u=this.data.use_water_voucher?this.data.use_water_voucher:{};
+
          if("-1" != e && -1 != e) {
              //使用抵用券
              var goods_id=t.currentTarget.dataset.goodsid;
-             li['goods_id']=t.currentTarget.dataset.goodsid,li['use_num']=t.currentTarget.dataset.usenum,li['deduct_cost']=t.currentTarget.dataset.deductcost;
-             use_water_voucher[goods_id]=li;
+             if(u[goods_id]){
+                 u[goods_id]='';
+             }else{
+                 li['goods_id']=t.currentTarget.dataset.goodsid,li['use_num']=t.currentTarget.dataset.usenum,li['deduct_cost']=t.currentTarget.dataset.deductcost;
+                 use_water_voucher[goods_id]=li;
+                 u[goods_id]=li;
+             }
          }else{
-             use_water_voucher='';
+             u='';
          }
         var  i = getApp().core.getStorageSync(getApp().const.INPUT_DATA);
         getApp().core.removeStorageSync(getApp().const.INPUT_DATA);
         var o = i.mch_list,a = this.data.index;
-        o[a].picker_water_voucher=li;
+        o[a].picker_water_voucher=u;
+
         i.mch_list = o
         this.setData(i)
 
-        console.info(11111111);
-      var  z = this.data.mch_list;
-        console.info(z);
-
-
+        console.info(use_water_voucher);
+     //   var  z = this.data.mch_list;
             this.setData({
             show_water_voucher: !1,
-            use_water_voucher: use_water_voucher,
+            use_water_voucher: u,
         }), this.getPrice();
     },
 
@@ -291,10 +303,8 @@ Page({
     },
     getPrice: function() {
         var o = this, t = o.data.mch_list,w=o.data.use_water_voucher, e = o.data.integral_radio, a = (o.data.integral,
-        0), i = 0, s = {}, n = 0;
-        console.info(w);
+        0), i = 0, s = {}, n = 0,deduction=0;
         for (var r in t) {
-
             var c = t[r], p = (parseFloat(c.total_price), parseFloat(c.level_price)), d = t[r].goods_list;
             n = 0, c.picker_coupon && 0 < c.picker_coupon.sub_price && (1 == c.picker_coupon.appoint_type && null != c.picker_coupon.cat_id_list ? d.forEach(function(t, e, a) {
                 for (var i in t.cat_id) {
@@ -310,6 +320,7 @@ Page({
             for (var k in t[r]['water_voucher']){
                     var w_gid= t[r]['water_voucher'][k]['goods_id'];
                     if(w[w_gid]&&w[w_gid].deduct_cost){
+                        deduction+=w[w_gid].deduct_cost;
                         a-=w[w_gid].deduct_cost;
                     }
             }
@@ -320,6 +331,7 @@ Page({
 
         a = 0 <= a ? a : 0, o.setData({
             new_total_price: a.toFixed(2),
+            deduction: deduction,
             offer_rule: s,
             is_area: i
         });

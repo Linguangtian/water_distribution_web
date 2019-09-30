@@ -164,8 +164,8 @@
                     <view class="flex-grow-0">
                         <view style="color: #888" wx:if="{{!item.water_voucher||item.water_voucher.length==0}}">目前无可用水票电子票</view>
                         <block wx:else>
-                            <view style="color: #ff4544" wx:if="{{use_water_voucher}}">-{{item.water_voucher[0].deduct_cost}}元</view>
-                            <view style="color: #ff4544" wx:else>有{{item.water_voucher[0].use_num}}水票可以使用</view>
+                            <view style="color: #ff4544" wx:if="{{deduction}}">-{{deduction}}元</view>
+                            <view style="color: #ff4544" wx:else>有水票可以使用</view>
                         </block>
                     </view>
                     <view class="flex-grow-0">
@@ -248,7 +248,7 @@
         电子票
         -->
         <view class="coupon-picker" wx:if="{{show_water_voucher}}">
-            <scroll-view class="coupon-list" scrollY="true" style="height: 100%">
+            <scroll-view class="coupon-list" scrollY="true" style="height: 100%;position: relative;" >
                 <view bindtap="useWaterVoucher" class="flex-y-center flex-x-center" data-index="-1" style="height: 80rpx;margin-bottom: 24rpx;color: #888;border: 1rpx solid #e3e3e3;border-radius: 10rpx">不使水票
                 </view>
                 <view bindtap="useWaterVoucher" class="coupon-item coupon-status-{{item.status}} active }}" data-index="{{index}}"data-goodsid="{{item.goods_id}}"  data-usenum="{{item.use_num}}" data-deductcost="{{item.deduct_cost}}" wx:for="{{water_voucher}}" wx:key="{{item.id}}">
@@ -256,14 +256,20 @@
                         <view class="flex-grow-0 ">
                             <image  style="display:block;height: 120rpx;width: 120rpx; margin: auto 0;"src=" {{item.cover_pic}}"></image>
                         </view>
-                        <view class="flex-grow-1" style="margin-left: 10rpx;">
+                        <view class="flex-grow-1" style="margin-left: 10rpx;"style="position:relative; ">
                             <view style="font-size: 8pt;padding-top:10px;margin-top: 10rpx ;"style="width: 100%">{{item.name}}-水票</view>
                             <view style="margin-top: 20rpx;">
                                 <text>￥{{item.price}}/张 </text>|
                                 <text>剩余：{{item.num}}张</text>
                             </view>
+                            <image  wx:if="{{use_water_voucher[item.goods_id]}}" style="z-index: 10;position: absolute;right: 0;bottom: 0;  display:block;height: 40rpx;width: 40rpx; margin: auto 0;"src="img/success.png"></image>
                         </view>
                     </view>
+                </view>
+
+                <view bindtap="hideWaterVoucher"  class="flex-y-center flex-x-center cancel-bnt" data-index="-1" >
+
+                    返回
                 </view>
             </scroll-view>
         </view>

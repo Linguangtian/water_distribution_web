@@ -67,8 +67,14 @@
         </view>
 
         <view class="flex-grow-1 flex-row" wx:else>
-            <view bindtap="showVoucher" class="flex-grow-1 flex-y-center flex-x-center add-voucher" data-goods_id="{{goods.id}}" wx:if="{{goods.setting_voucher==1}}">购买抵用券</view>
-            <view bindtap="addCart" class="flex-grow-1 flex-y-center flex-x-center add-cart" wx:else>加入购物车</view>
+       <!--     <view  class="flex-grow-1 flex-y-center flex-x-center add-voucher" data-goods_id="{{goods.id}}" wx:if="{{goods.setting_voucher==1}}">
+
+                <navigator  url="/pages/watervoucher-info/index?goods_id={{goods.id}}"  style="width: 100%" >
+                    <view style="width: 100%;padding: 10rpx 0;" class=" flex-x-center"> 购买抵用券</view>
+                </navigator>
+            </view>
+            <view bindtap="addCart" class="flex-grow-1 flex-y-center flex-x-center add-cart" wx:else>加入购物车</view>-->
+            <view bindtap="addCart" class="flex-grow-1 flex-y-center flex-x-center add-cart" >加入购物车</view>
             <view bindtap="buyNow" class="flex-grow-1 flex-y-center flex-x-center buy-now">立即购买</view>
         </view>
 

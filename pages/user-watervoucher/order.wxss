@@ -58,7 +58,11 @@
     right: 8rpx;
     z-index: 1;
 }
+.voucher-name{
+    height: 35rpx;
+    overflow: hidden;
 
+}
 .coupon-list .coupon-item .coupon-left {
     color: #fff;
     width: 202rpx;

@@ -65,7 +65,9 @@
     background: #ff4544;
     color: #fff;
 }
-
+ .navigator-hover{
+        background:transparent !important;
+}
 ._negotiable {
     height: 100%;
     width: 100%;
