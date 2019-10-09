@@ -333,24 +333,27 @@
                 </view>
             </view>
         </view>
-        <cover-view class="bottom-bar flex-row" wx:if="{{is_area==1}}">
-            <cover-view class="is_area">
-                <cover-view>所选地区自营商品暂时无货</cover-view>
+
+        <view wx:if="{{tijiao}}" >
+            <cover-view class="bottom-bar flex-row" wx:if="{{is_area==1}}">
+                <cover-view class="is_area">
+                    <cover-view>所选地区自营商品暂时无货</cover-view>
+                </cover-view>
             </cover-view>
-        </cover-view>
-        <cover-view class="bottom-bar flex-row" wx:else>
-            <cover-view class="flex-y-center flex-grow-1" style="padding: 0 24rpx">
-                <cover-view class="flex-grow-1" style="color:#ff4544 ">
-                        总计：￥{{new_total_price}}
-                    </cover-view>
+            <cover-view class="bottom-bar flex-row" wx:else>
+                <cover-view class="flex-y-center flex-grow-1" style="padding: 0 24rpx">
+                    <cover-view class="flex-grow-1" style="color:#ff4544 ">
+                            总计：￥{{new_total_price}}
+                        </cover-view>
+                </cover-view>
+                <cover-view class="flex-y-center flex-grow-0 flex-x-center submit-btn" style="background-color:#ccc;" wx:if="{{offer_rule&&offer_rule.is_allowed==1}}">
+                    <cover-view style="white-space:normal;">{{offer_rule.msg}}</cover-view>
+                </cover-view>
+                <cover-view bindtap="orderSubmit" class="flex-x-center flex-y-center flex-row submit-btn" wx:else>
+                    <cover-view>提交</cover-view>
+                </cover-view>
             </cover-view>
-            <cover-view class="flex-y-center flex-grow-0 flex-x-center submit-btn" style="background-color:#ccc;" wx:if="{{offer_rule&&offer_rule.is_allowed==1}}">
-                <cover-view style="white-space:normal;">{{offer_rule.msg}}</cover-view>
-            </cover-view>
-            <cover-view bindtap="orderSubmit" class="flex-x-center flex-y-center flex-row submit-btn" wx:else>
-                <cover-view>提交</cover-view>
-            </cover-view>
-        </cover-view>
+        </view>
         <include src="/components/get-card/get-card.wxml"></include>
     </view>
     <include src="/components/footer/footer"></include>

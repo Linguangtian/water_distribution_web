@@ -71,10 +71,16 @@
                     <view class="flex-grow-1">积分抵扣</view>
                     <view class="flex-grow-0">-￥{{order.integral.forehead}}</view>
                 </view>
+                <view class="flex-row block-row" wx:if="{{order.is_water_voucher==1}}">
+                    <view class="flex-grow-1">水票抵扣</view>
+                    <view class="flex-grow-0">-￥{{order.water_deduction}}</view>
+                </view>
+
                 <view class="flex-row block-row" wx:if="{{order.discount<10&&order.discount}}">
                     <view class="flex-grow-1">会员折扣</view>
                     <view class="flex-grow-0">{{order.discount}}折</view>
                 </view>
+
                 <view class="flex-row block-row" wx:if="{{order.before_update}}">
                     <view class="flex-grow-1">{{order.before_update}}</view>
                     <view class="flex-grow-0">￥{{order.money}}</view>

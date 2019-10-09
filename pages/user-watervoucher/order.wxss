@@ -61,6 +61,7 @@
 .voucher-name{
     height: 35rpx;
     overflow: hidden;
+    line-height: 35rpx;
 
 }
 .coupon-list .coupon-item .coupon-left {
@@ -69,7 +70,7 @@
 }
 
 .coupon-list .coupon-item .coupon-right {
-    padding: 20rpx 10rpx;
+
 }
 
 .user_coupon_font {

@@ -16,7 +16,8 @@ Page({
         mch_offline: !0,
         show_water_voucher: !1,
         use_water_voucher:'',
-        deduction:0
+        deduction:0,
+        tijiao:1
     },
     onLoad: function(t) {
         getApp().page.onLoad(this, t);
@@ -202,6 +203,7 @@ Page({
         this.getInputData(), a[e].coupon_list && 0 < a[e].coupon_list.length && this.setData({
      /*   this.getInputData(), a[e].water_voucher && 0 < a[e].water_voucher.length && this.setData({*/
             show_coupon_picker: !0,
+
             coupon_list: a[e].coupon_list,
        /*     water_voucher: a[e].water_voucher,*/
             index: e
@@ -212,6 +214,7 @@ Page({
         var e = t.currentTarget.dataset.index, a = this.data.mch_list;
         this.getInputData(), a[e].water_voucher && 0 < a[e].water_voucher.length && this.setData({
             show_water_voucher: !0,
+            tijiao: !1,
             water_voucher: a[e].water_voucher,
             index: e
         });
@@ -220,8 +223,11 @@ Page({
     //隐藏
     hideWaterVoucher:function(){
         this.setData({
-            show_water_voucher: !1
+            show_water_voucher: !1,
+            tijiao: !0,
         })
+
+
     },
 
     useWaterVoucher:function(t){
@@ -253,6 +259,7 @@ Page({
         console.info(use_water_voucher);
      //   var  z = this.data.mch_list;
             this.setData({
+                tijiao: !0,
             show_water_voucher: !1,
             use_water_voucher: u,
         }), this.getPrice();
