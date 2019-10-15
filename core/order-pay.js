@@ -133,6 +133,8 @@ var pay = {
                     method: "post",
                     data: r,
                     success: function(e) {
+
+                        console.info(5555);
                         if (0 == e.code) {
                             var t = function() {
                                 app.request({
@@ -171,6 +173,8 @@ var pay = {
                                     }
                                 });
                             };
+
+
                             if (getApp().page.bindParent({
                                 parent_id: A,
                                 condition: 1
@@ -261,7 +265,7 @@ var pay = {
                                         }
                                     }
                                 }
-                            }) : 2 == r.payment ? (o = "HUODAO_PAY", t()) : 3 == r.payment && (o = "BALANCE_PAY", 
+                            }) : 2 == r.payment ? (o = "HUODAO_PAY", t()) : 4 == r.payment ? (o = "CREDIT_PAY", t()) : 3 == r.payment && (o = "BALANCE_PAY",
                             t());
                         }
                         if (1 == e.code) return getApp().core.hideLoading(), void _.page.showToast({

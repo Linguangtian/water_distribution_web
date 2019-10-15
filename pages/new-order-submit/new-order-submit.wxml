@@ -28,6 +28,7 @@
                 <view class="flex-grow-0" wx:if="{{payment==0}}">线上支付</view>
                 <view class="flex-grow-0" wx:if="{{payment==2}}">货到付款</view>
                 <view class="flex-grow-0" wx:if="{{payment==3}}">账户余额支付</view>
+                <view class="flex-grow-0" wx:if="{{payment==4}}">账期支付</view>
                 <view class="flex-grow-0">
                     <image src="{{__wxapp_img.store.jiantou_r.url}}" style="width: 12rpx;height: 22rpx;margin-left: 12rpx"></image>
                 </view>
