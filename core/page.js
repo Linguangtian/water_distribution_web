@@ -474,7 +474,7 @@ module.exports = {
     setUserInfoShow: function() {
         var e = this.currentPage;
         "wx" == getApp().platform ? e.setData({
-            user_info_show: !0
+            user_info_show: !1
         }) : this.myLogin();
     },
     setPhone: function() {

@@ -114,7 +114,8 @@ var api = {
         sms_setting: _api_root + "user/sms-setting",
         authorization_bind: _api_root + "user/authorization-bind",
         check_bind: _api_root + "user/check-bind",
-        card_detail: _api_root + "user/card-detail"
+        card_detail: _api_root + "user/card-detail",
+        credit_info: _api_root + "user/credit-info",
     },
     share: {
         join: _api_root + "share/join",
@@ -222,8 +223,10 @@ var api = {
         list: _api_root + "recharge/list",
         submit: _api_root + "recharge/submit",
         record: _api_root + "recharge/record",
-        detail: _api_root + "recharge/detail"
+        detail: _api_root + "recharge/detail",
+
     },
+
     mch: {
         apply: _api_root + "mch/index/apply",
         apply_submit: _api_root + "mch/index/apply-submit",

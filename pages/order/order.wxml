@@ -67,6 +67,10 @@
                     <text>送水员此次回收空桶数：{{order.waterorder.back_bucket}}个 </text>
                 </view>
 
+                <view wx:if="{{order.pay_type==4}}" style="border-bottom:1rpx solid #e3e3e3;padding-bottom: 15rpx;margin-bottom: 15rpx;">
+                    <text>支付方式 ：   账期付款 </text>
+                </view>
+
 
 
                 <view class="flex-row">

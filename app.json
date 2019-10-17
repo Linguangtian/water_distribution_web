@@ -1,24 +1,18 @@
 {
   "pages": [
+    "pages/user/user",
     "pages/index/index",
+    "pages/credit/index",
     "pages/new-order-submit/new-order-submit",
-
-
-
-
-
-    "pages/watervoucher-info/index",
     "pages/order/order",
+    "pages/watervoucher-info/index",
     "pages/waterman/index",
     "pages/watervoucher-goods/index",
-
     "pages/water-order/order-detail",
     "pages/goods/goods",
     "pages/user-watervoucher/order",
-
     "pages/cart/cart",
     "pages/list/list",
-    "pages/user/user",
     "pages/search/search",
     "pages/order-submit/order-submit",
     "pages/order-detail/order-detail",

@@ -134,7 +134,6 @@ var pay = {
                     data: r,
                     success: function(e) {
 
-                        console.info(5555);
                         if (0 == e.code) {
                             var t = function() {
                                 app.request({

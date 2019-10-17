@@ -12,7 +12,8 @@
                                 <image class="avatar" src="{{user_info.avatar_url}}"></image>
                             </view>
                             <view class="flex-grow-1">
-                                <text class="user-name">{{user_info.nickname}}</text>
+                                <text class="user-name" wx:if="{{user_info.nickname}}">{{user_info.nickname}}</text>
+                                <button bindgetuserinfo="getUserInfo"  bindtap="myLogin"  openType="getUserInfo"  class="user-name" wx:else>点击授权登入</button>
                                 <view bindtap="member" class="user-level flex-row">
                                     <view class="level-name flex-y-bottom">
                                         <image src="{{__wxapp_img.user.level.url}}"></image>
@@ -41,7 +42,8 @@
                                 </view>
                             </view>
                             <view class="flex-x-center" style="margin-top: 10rpx;">
-                                <text class="user-name">{{user_info.nickname}}</text>
+                                <text class="user-name" wx:if="{{user_info.nickname}}">{{user_info.nickname}}</text>
+                                <button bindgetuserinfo="getUserInfo"  bindtap="myLogin"  openType="getUserInfo"  class="user-name" wx:else>点击授权登入</button>
                             </view>
                         </view>
                     </view>
@@ -87,6 +89,19 @@
                             <view class="fs-sm">{{wallets.status_2.text}}</view>
                         </view>
                     </view>
+
+                        <view class="flex-grow-0 {{wallet.re==1?'wallet-3':'wallet-2'}}  flex-x-center flex-y-center" wx:if="{{wallet.re==1}}">
+                            <view class="flex-grow-1 flex-y-center flex-col" style="  border-right: 1rpx solid #e2e2e2;">
+                                <navigator hoverClass="none" url="/pages/credit/index">
+                                    <view class="num-1 flex-x-center">{{user_info.credit_current}}</view>
+                                    <view class="flex-row num-2 flex-x-center">
+                                        <image class="flex-grow-0" src="{{wallets.status_1.icon}}" style="width:26rpx;height:26rpx;margin-right:10rpx;"></image>
+                                        <view class="flex-grow-0">账期</view>
+                                    </view>
+                                </navigator>
+                            </view>
+                        </view>
+
                     <view bindtap="integral_mall" class="flex-grow-0 {{wallet.re==1?'wallet-3':'wallet-2'}} flex-x-center flex-y-center" data-integral="{{user_info.integral}}">
                         <view class="flex-grow-1 flex-y-center flex-col">
                             <view class="num-1 flex-x-center">{{user_info.integral}}</view>
@@ -97,7 +112,7 @@
                         </view>
                     </view>
                     <view class="flex-grow-0 {{wallet.re==1?'wallet-3':'wallet-2'}}  flex-x-center flex-y-center" wx:if="{{wallet.re==1}}">
-                        <view class="flex-grow-1 flex-y-center flex-col">
+                        <view class="flex-grow-1 flex-y-center flex-col" >
                             <navigator hoverClass="none" url="/pages/balance/balance">
                                 <view class="num-1 flex-x-center">{{user_info.money}}</view>
                                 <view class="flex-row num-2 flex-x-center">
@@ -107,6 +122,8 @@
                             </navigator>
                         </view>
                     </view>
+
+
                 </view>
                 <view class="order-block" wx:if="{{setting&&setting.is_order==1}}">
                     <navigator class="my-order" url="/pages/order/order?status=-1">我的订单</navigator>

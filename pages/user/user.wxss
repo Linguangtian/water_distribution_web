@@ -239,12 +239,13 @@ button::after {
 
 .wallet-3 {
     background-color: #fff;
-    width: 300rpx;
+    width: 200rpx;
     height: 100%;
 }
 
 .wallet .wallet-3:last-child .flex-grow-1 {
     border-left: 1rpx solid #e2e2e2;
+
 }
 
 .option-item.style {
