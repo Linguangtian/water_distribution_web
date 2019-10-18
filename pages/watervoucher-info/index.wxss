@@ -66,7 +66,7 @@ page{background:#ffffff;}
     display: inline-block;
     margin: 0 30rpx 30rpx 0;
     background: #f7f7f7;
-    padding: 13rpx 50rpx;
+    padding: 13rpx 45rpx;
 }
 
  .attr-item.active {

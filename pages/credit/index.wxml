@@ -1,0 +1,58 @@
+<view class="page">
+    <include src="/components/common/common"></include>
+    <include src="/components/header/header"></include>
+    <view class="body after-navber">
+        <view class="info">
+            <image class="bg" src="{{setting.pic_url}}"></image>
+            <view class="flex-row">
+                <view class="flex-grow-1" style="position:relative;">
+                    <view class="info-1">
+                        <view class="flex-row">
+                            <view class="flex-grow-1 flex-x-center">账期额度可用(元)</view>
+                        </view>
+                    </view>
+                    <view class="info-2 flex-x-center">{{info.credit_current}}</view>
+
+                </view>
+            </view>
+            <view class="flex-row" style="position:relative;">
+                <view class="flex-grow-1 flex-x-center" style="color: #ffffff">
+                    账期额度:  {{info.credit_line}} 元
+                </view>
+
+                <view class="flex-grow-1 flex-x-center"style="color: #ffffff" >
+                   账期已使用: {{info.credit_cost}} 元
+                </view>
+
+            </view>
+        </view>
+
+
+        <view class="record">
+
+            <view class="record-list">
+                <view bindtap="GoToDetail" class="record-one " data-index="{{index}}" wx:for="{{list}}" wx:key="{{item.id}}">
+                    <view class="flex-row">
+                           <view class="flex-grow-1">
+                                    <view style="width:500rpx;text-align:left">
+                                        <view class="record-1 text-more">{{item.create_time}}</view>
+                                        <view class="record-2">{{item.explain}} <span wx:if="{{item.order_no}}"> </span></view>
+                                    </view>
+                            </view>
+                            <view class="flex-grow-0 flex-y-center {{item.flag!=1?'record-3':'record-4'}}">
+                                <span wx:if="{{item.change_type==1}}">-</span>
+                                <span wx:else>+</span>
+                                {{item.credit_money}}
+                            </view>
+                      </view>
+
+                    <view style="padding: 10rpx 0;float: right;  font-size: 9pt;">
+                       当前账期 ：{{item.current_credit_cost}}
+                    </view>
+                </view>
+
+            </view>
+        </view>
+    </view>
+    <include src="/components/footer/footer"></include>
+</view>

@@ -34,7 +34,7 @@
 
             </view>
             <view class="block" style="margin-top: 5rpx;padding:10rpx 34rpx;">
-                <view >线上支付：{{order.pay_type_text}}</view>
+                <view >付款金额：{{order.total_price}}</view>
             </view>
             <view class="block">
                 <view class="goods-item">

@@ -61,7 +61,13 @@ Page({
     commentSubmit:function(e){
         var a=this;
         var num=a.data.return_bucket;
-        if(!num) return false;
+        if(!num){
+            this.setData({
+                return_bucket:'',
+                notis:'请输入桶数'
+            });
+            return false;
+        }
         getApp().core.showLoading({
             title: "正在提交",
             mask: !0

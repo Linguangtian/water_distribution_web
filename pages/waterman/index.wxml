@@ -44,7 +44,7 @@
                             </view>
                         </view>
                         <view style="padding-bottom: 15rpx;">
-                            线上付款：<text  style="color: red;">￥{{order.total_price}}</text>
+                            付款金额：<text  style="color: red;">￥{{order.total_price}}</text>
                         </view>
                     </view>
                 </view>

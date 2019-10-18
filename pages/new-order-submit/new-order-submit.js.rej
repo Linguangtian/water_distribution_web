@@ -1,0 +1,9 @@
+diff a/pages/new-order-submit/new-order-submit.js b/pages/new-order-submit/new-order-submit.js	(rejected hunks)
+@@ -160,6 +160,7 @@
+ 
+ 
+ 
++
+ 
+                     for (var r in s) {
+                         var c = {}, p = {},w = {};
